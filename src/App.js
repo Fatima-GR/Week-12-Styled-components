@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import HeaderMainPage from "./components/HeaderMainPage.js";
 
 export const App = () => {
   return (
-    <div>
-      Find me in src/app.js!
-    </div>
-  )
-}
+    <>
+      <HeaderMainPage
+        headerText="Get ready for adventure!"
+        a="about"
+        b="trips"
+        c="pricing"
+        d="contact"
+      />
+
+    </>
+  );
+};
