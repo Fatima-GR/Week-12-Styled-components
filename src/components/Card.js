@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Header = styled.header`
+  max-width: 500px;
   margin: 20px;
   height: 300px;
   background-color: #151414;
