@@ -2,37 +2,21 @@ import React from "react";
 import styled from "styled-components";
 
 const Header = styled.header`
-  width: 100%;
-  position: fixed;
-  height: 290px;
+  margin: 20px;
+  height: 300px;
   background-color: #151414;
-
-  @media (min-width: 550px) {
-    height: 350px;
-  }
-
-  @media (min-width: 768px) {
-    height: 550px;
-  }
-`;
+  margin-bottom: 300px;
+  `;
 
 const Navigation = styled.nav`
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  color: white;
-  padding-bottom: 10px;
-  height: 290px;
-
-  @media (min-width: 550px) {
-    padding-top: 15px;
-    padding-right: 10px;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+  flex-direction:column;
+  align-items:end;
+  padding-top: 15px;
+  padding-right: 10px;
+  
   @media (min-width: 768px) {
     flex-direction: row;
-    align-items: flex-start;
     justify-content: flex-end;
   }
 `;
@@ -52,7 +36,6 @@ const Anchor = styled.a`
     font-size: 20px;
     padding-bottom: 10px;
   }
-
   @media (min-width: 768px) {
     font-size: 22px;
     color: #f5f5f5;
@@ -62,7 +45,6 @@ const Anchor = styled.a`
 const HeadingOne = styled.h1`
   font-family: "Times New Roman", Times, serif;
   font-size: 35px;
-  width: 290px;
   position: absolute;
   z-index: 1;
   left: 70px;
@@ -77,44 +59,45 @@ const HeadingOne = styled.h1`
     font-size: 40px;
     width: 400px;
   }
-  @media (min-width: 768px) {
-    font-size: 85px;
-    line-height: 122.2px;
-    width: 684px;
-    height: 243px;
-    left: 170px;
-    top: 200px;
-  }
 `;
 
 const Bubble = styled.div`
   position: absolute;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  top: -50px;
-  left: 50px;
+  top: 120px;
+  left: 80px;
   background-color: #dd8723;
-
-  @media (min-width: 550px) {
-    width: 300px;
-    height: 300px;
-  }
-
-  @media (min-width: 768px) {
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    top: -50px;
-    left: 150px;
-  }
 `;
 
-const HeaderMainPage = (props) => {
-  const { headerText, a, b, c, d } = props;
+  const PictureFrame = styled.div`
+  width:100px;
+  height: 100px;
+  border-radius: 50%;
+  position:absolute;
+  top:25px;
+  left:25px;
+  background-position: center; /* Center the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-image: url(${(props)=> props.url});
+  `;
+
+const CoverImage = styled.img`
+width:100%;
+
+`;
+
+
+
+
+const Card= (props) => {
+  const { headerText, a, b, c, d, picture, coverPicture, className } = props;
 
   return (
-    <Header>
+    <Header className={className}>
+    <PictureFrame url={picture}></PictureFrame>
+
       <Navigation>
         <Anchor>{a}</Anchor>
         <Anchor>{b}</Anchor>
@@ -127,7 +110,11 @@ const HeaderMainPage = (props) => {
       <div>
         <Bubble></Bubble>
       </div>
+
+      <CoverImage src={coverPicture} />
+      
+
     </Header>
   );
 };
-export default HeaderMainPage;
+export default Card;
